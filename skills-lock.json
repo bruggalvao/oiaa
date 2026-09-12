@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "nlp-natural-language-processing": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "skillPath": "nlp-natural-language-processing/SKILL.md",
+      "computedHash": "25e0d235d40ce8c5d8c4c12836b756768328b98541eac1fa3f5dc819814cadf9"
+    }
+  }
+}

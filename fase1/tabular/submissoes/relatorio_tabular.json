@@ -1,0 +1,11 @@
+{
+  "equipe": "Germinare",
+  "modelo": "Floresta Aleatoria",
+  "teste_pct": 25,
+  "profundidade": 10,
+  "f1_macro": 0.7055,
+  "acuracia": 0.754,
+  "just_modelo": "Floresta Aleatória, 300 árvores, profundidade 10, class_weight {0:1, 1:2.2, 2:1.1}. Sem peso, a floresta quase não previa a classe Médio (F1 0,54); 'balanced' resolveu isso (0,69) e foi o maior ganho isolado. Profundidade 10 foi o melhor ponto entre subajuste e decorar o treino; acima de 200 árvores o resultado só estabiliza. O peso intermediário manteve o F1 do 'balanced' e ganhou 1 ponto de acurácia. Árvore (0,67) e logística (0,69) ficaram abaixo. Validação: F1 0,706 e acurácia 0,754 no split de 25%; 0,707 ± 0,02 em validação cruzada repetida.",
+  "just_sinais": "Desempenho acadêmico: taxa_aprovacao_2sem (0,21), taxa_aprovacao_1sem (0,17), uc_2sem_nota_media (0,12) e uc_1sem_nota_media (0,09) somam quase 60% da importância, e o 2º semestre pesa mais que o 1º. Depois vêm idade_na_matricula e mensalidades_em_dia (0,06 cada). Sem as variáveis socioeconômicas o F1 cai de 0,71 para 0,67, então elas têm sinal real. O modelo erra mais na classe Médio (F1 0,50) e 12% dos alunos de risco alto são previstos como baixo.",
+  "just_cuidado": "A lista serve só para priorizar o acolhimento pedagógico; não decide matrícula, bolsa, turma ou sanção. Acesso restrito à coordenação e à equipe de acompanhamento, sem repassar aos alunos como 'nota de risco'. Validade de um semestre, com reavaliação se mudar política de bolsa ou mensalidade. O modelo erra 25% dos casos e deixa passar 12% dos de risco alto, então não substitui os canais atuais. Como as variáveis financeiras concentram a sinalização em quem já é vulnerável, a resposta tem que ser apoio, não constrangimento. A decisão e o registro do que foi feito em cada caso ficam com a coordenação."
+}

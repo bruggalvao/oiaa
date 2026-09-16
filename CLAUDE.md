@@ -9,7 +9,7 @@ Três desafios de classificação supervisionada, mesma métrica oficial (**F1-m
 | # | Pasta | Dado | Tarefa | Classes | Teste oculto |
 |---|---|---|---|---|---|
 | 1 | `fase1/tabular/` | Tabela — estudantes | Risco de evasão | 3 (baixo/médio/alto) | 900 linhas |
-| 2 | `fase1/visao/` | Imagem — fotos de resíduos | Tipo de material | 4 (papel/plástico/vidro/metal) | 240 linhas |
+| 2 | `fase1/visao/` | Imagem — fotos 48×48 de resíduos numa esteira | Tipo de material | 5 (papel 25% / vidro 21% / plástico 20% / metal 17% / papelão 17%) | 240 linhas |
 | 3 | `fase1/nlp/` | Texto — avaliações de produto de um marketplace | Cliente satisfeito ou insatisfeito | 2 (0 = insatisfeito, **classe crítica e minoritária, ~29%**; 1 = satisfeito) | 900 linhas |
 
 O desafio tabular destrava os outros dois: o que se aprende ali se repete quase sem mudança em visão e texto.
@@ -20,7 +20,7 @@ O desafio tabular destrava os outros dois: o que se aprende ali se repete quase 
 - `fase1/` — área de trabalho dos desafios.
   - `Guia_Desafios_Fase1_OIAA2026.pdf` — enunciado oficial dos três desafios.
   - `tabular/` — desafio 1 (ainda vazio — caderno/dados a adicionar).
-  - `visao/` — desafio 2 (ainda vazio — caderno/dados a adicionar).
+  - `visao/` — desafio 2. Contém `Visao_COLAB.ipynb` (caderno preenchido), `treino_fotos.npz`/`teste_fotos.npz` (cópia local dos dados oficiais; o caderno só baixa se o arquivo não existir na pasta) e `submissoes/` com `submissao_visao.csv` e `relatorio_visao.json`.
   - `nlp/` — desafio 3. Contém `NLP_COLAB.ipynb` (caderno preenchido), `treino.csv`/`teste.csv` (cópia local dos dados oficiais; o caderno baixa da URL e só usa a cópia se a rede falhar) e `submissoes/` com os entregáveis `submissao_nlp.csv` e `relatorio_nlp.json`.
 
 Convenção de saída: cada desafio grava seus entregáveis em `fase1/<desafio>/submissoes/` (sem repetir o nome do desafio na subpasta). O caderno já aponta para lá via `PASTA_SUBMISSAO`.
@@ -59,14 +59,17 @@ Antes de sugerir uma abordagem, prefira checar o material já traduzido em `mate
 | Desafio | Status | Melhor validação | Configuração |
 |---|---|---|---|
 | Tabular | não iniciado | — | — |
-| Visão | não iniciado | — | — |
+| Visão | caderno preenchido, submissão gerada | F1-macro 0.846 / acurácia 0.849 (CV 5×3: 0.849 ± 0.017) | `StandardScaler` + `SVC(C=8, gamma=0.01)` sobre 146 descritores: os 14 do caderno + 132 novos (LBP global e por quadrante, orientação de bordas, laplaciano, periodicidade, reflexo, histogramas de matiz/saturação/valor), calculados na célula "SUA VEZ · Parte 1" |
 | NLP | caderno preenchido, submissão gerada | F1-macro 0.948 / recall₀ 0.935 | `LinearSVC(C=0.3, class_weight={0: 1.4, 1: 1})` + TF-IDF (1,2), 50k termos, `min_df=3`, `sublinear_tf`, `strip_accents='unicode'` |
 
-O log um-fator-por-vez do NLP está na célula "Caderno de bordo" do próprio notebook; não repita os experimentos, parta dele.
+O log um-fator-por-vez de cada desafio está na célula "Caderno de bordo" do próprio notebook; não repita os experimentos, parta dele.
+
+No desafio de visão, a alavanca que importa é a **representação**, não o hiperparâmetro: com os 14 descritores do caderno o teto é F1 ≈ 0.745 (SVM padronizado, `C` 8–20, `gamma` 0.1); descritores novos de textura e cor levaram a 0.85, e a partir de 146 descritores tudo empata no ruído (HOG denso e miniatura de pixels pioram). Os descritores extras ficam na célula editável e se aplicam a `X_caract` e `X_caract_teste` com a mesma função (só cálculo por imagem, sem `fit`, logo sem vazamento). Ao aumentar o número de descritores, **reajuste `gamma`** (`'scale'` ≈ 1/n_descritores): o valor bom para 14 colunas sobreajusta com 146. `class_weight` não ajudou (desbalanceamento leve).
 
 ## Ambiente
 
-- `fase1/nlp/NLP_COLAB.ipynb` é um notebook Colab — ao editar, preserve a estrutura de células e siga o pipeline canônico de texto do material (dividir → vetorizar só no treino → treinar → avaliar com F1-macro).
+- Os `*_COLAB.ipynb` são notebooks Colab — ao editar, preserve a estrutura de células e siga o pipeline canônico do material (dividir → ajustar só no treino → treinar → avaliar com F1-macro). Célula markdown nova precisa de `id` de nível superior (nbformat 4.5), não só em `metadata`.
+- **Execute os notebooks com o kernel do `.venv`** (`oiaa-venv`, registrado em `.venv/share/jupyter/kernels/`; comando completo no `SKILL.md` do jupyter-notebook). O kernelspec `python3` padrão da máquina aponta para o Python global, com outra versão do scikit-learn, e os números mudam ~1pp.
 - **Para rodar um notebook localmente (execução de células, teste de código):** verifique se existe um `.venv` na raiz do repositório; se não existir, crie um antes de instalar qualquer pacote ou executar o notebook.
 
   ```bash

@@ -1,0 +1,13 @@
+{
+  "equipe": "Germinare",
+  "modelo": "SVM",
+  "caracteristicas": "todas",
+  "padronizar": true,
+  "C": 8.0,
+  "teste_pct": 25,
+  "f1_macro": 0.8459,
+  "acuracia": 0.8494,
+  "just_caracteristicas": "Os 14 descritores do caderno mais 132 novos, em três famílias: textura (LBP global e por quadrante, orientação das bordas, laplaciano, variação local e periodicidade, que mede a ondulação do papelão), reflexo (área muito clara e quão concentrado está o reflexo) e cor (histogramas de matiz, saturação e valor). Os 14 originais resumem cor e brilho da imagem inteira e confundem tudo que é neutro (vidro, metal, papel); os erros da galeria tinham padrão, e o capítulo 3 manda criar descritor novo nesse caso. Com SVM RBF padronizado (C=8, gamma=0,01) o F1 foi de 0,74 para 0,85 em validação cruzada (0,846 e acurácia 0,849 no split de 25%). Sem padronização o mesmo SVM cai para 0,65. Floresta (0,82) e logística (0,74) ficaram abaixo.",
+  "just_confusoes": "Metal chamado de vidro (13 fotos), plástico chamado de papel (9), vidro chamado de plástico ou de metal (8 cada). Metal é a classe com menor recall (0,72). Papel x papelão, que a Rosa esperava ser o pior par, ficou em 2 a 3 fotos: os descritores de textura resolveram. O que sobra é a confusão entre superfícies neutras e reflexivas: numa foto de 48x48, lata amassada e vidro transparente têm brilho alto, saturação baixa e reflexo concentrado parecidos; plástico branco ou transparente vira papel. É limite da representação, não do rótulo: um humano acerta a maioria olhando a foto grande.",
+  "just_impacto": "Assistivo: a máquina sinaliza e a pessoa confirma. O modelo erra 15% das fotos, e o erro mais caro (vidro que vai para a prensa como plástico) acontece em 7% do vidro; em modo autônomo isso danifica equipamento. Na prática, a esteira pode passar direto o que o modelo marca como papel ou papelão (F1 0,89 e 0,92) e pedir confirmação humana para vidro, plástico e metal. Mudaria para autônomo por material quando o recall de vidro passasse de ~0,97 em fotos do próprio galpão, com auditoria mensal de uma amostra rotulada; para outra cooperativa, refazer a validação antes, porque câmera e luz diferentes derrubam o modelo."
+}

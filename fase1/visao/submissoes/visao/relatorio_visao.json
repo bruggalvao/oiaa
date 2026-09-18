@@ -1,0 +1,13 @@
+{
+  "equipe": "",
+  "modelo": "SVM sobre descritores v2 + MobileNetV3 congelada (TTA)",
+  "caracteristicas": "todas",
+  "padronizar": true,
+  "C": 30,
+  "teste_pct": 20,
+  "f1_macro": 0.8987,
+  "acuracia": 0.9,
+  "just_caracteristicas": "",
+  "just_confusoes": "",
+  "just_impacto": ""
+}

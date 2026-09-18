@@ -1,0 +1,140 @@
+[
+  {
+    "nome": "64-32/elu",
+    "cfg": {
+      "units": [
+        64,
+        32
+      ],
+      "ativacao": "elu",
+      "otimizador": "nadam"
+    },
+    "n_seeds": 1,
+    "f1": 0.7053536395349881,
+    "f1_aj": 0.7078694091365094
+  },
+  {
+    "nome": "64-32/elu",
+    "cfg": {
+      "units": [
+        64,
+        32
+      ],
+      "ativacao": "elu",
+      "otimizador": "nadam"
+    },
+    "n_seeds": 3,
+    "f1": 0.7095596145108654,
+    "f1_aj": 0.7079310859835575
+  },
+  {
+    "nome": "64-32/elu",
+    "cfg": {
+      "units": [
+        64,
+        32
+      ],
+      "ativacao": "elu",
+      "otimizador": "nadam"
+    },
+    "n_seeds": 5,
+    "f1": 0.7098108377567092,
+    "f1_aj": 0.7096363948730228
+  },
+  {
+    "nome": "128-128-64/elu",
+    "cfg": {
+      "units": [
+        128,
+        128,
+        64
+      ],
+      "ativacao": "elu",
+      "batch_size": 256
+    },
+    "n_seeds": 1,
+    "f1": 0.7059816106598567,
+    "f1_aj": 0.7041555383400543
+  },
+  {
+    "nome": "128-128-64/elu",
+    "cfg": {
+      "units": [
+        128,
+        128,
+        64
+      ],
+      "ativacao": "elu",
+      "batch_size": 256
+    },
+    "n_seeds": 3,
+    "f1": 0.7134760136529139,
+    "f1_aj": 0.7090307993020692
+  },
+  {
+    "nome": "128-128-64/elu",
+    "cfg": {
+      "units": [
+        128,
+        128,
+        64
+      ],
+      "ativacao": "elu",
+      "batch_size": 256
+    },
+    "n_seeds": 5,
+    "f1": 0.709641230532267,
+    "f1_aj": 0.7071891948658593
+  },
+  {
+    "nome": "128-64-32/selu",
+    "cfg": {
+      "units": [
+        128,
+        64,
+        32
+      ],
+      "ativacao": "selu",
+      "batch_size": 16,
+      "otimizador": "adamw",
+      "weight_decay": 0.0001
+    },
+    "n_seeds": 1,
+    "f1": 0.7044007589829242,
+    "f1_aj": 0.7023609996212385
+  },
+  {
+    "nome": "128-64-32/selu",
+    "cfg": {
+      "units": [
+        128,
+        64,
+        32
+      ],
+      "ativacao": "selu",
+      "batch_size": 16,
+      "otimizador": "adamw",
+      "weight_decay": 0.0001
+    },
+    "n_seeds": 3,
+    "f1": 0.7061981622581563,
+    "f1_aj": 0.7065389354420168
+  },
+  {
+    "nome": "128-64-32/selu",
+    "cfg": {
+      "units": [
+        128,
+        64,
+        32
+      ],
+      "ativacao": "selu",
+      "batch_size": 16,
+      "otimizador": "adamw",
+      "weight_decay": 0.0001
+    },
+    "n_seeds": 5,
+    "f1": 0.7079182182561585,
+    "f1_aj": 0.7102313803466598
+  }
+]

@@ -23,6 +23,8 @@ O desafio tabular destrava os outros dois: o que se aprende ali se repete quase 
   - `visao/` — desafio 2 (ainda vazio — caderno/dados a adicionar).
   - `nlp/` — desafio 3. Contém `NLP_COLAB.ipynb` (caderno preenchido), `treino.csv`/`teste.csv` (cópia local dos dados oficiais; o caderno baixa da URL e só usa a cópia se a rede falhar) e `submissoes/` com os entregáveis `submissao_nlp.csv` e `relatorio_nlp.json`.
 
+- `simulados/` — seis desafios de treino (dois por trilha) no formato dos cadernos oficiais, com dados públicos reais. Gabarito oculto em `simulados/_gabaritos/` (não abrir antes de resolver); correção com `.venv/Scripts/python simulados/corrigir.py <desafio> <submissao.csv>`. Detalhes, fontes e licenças em [simulados/README.md](simulados/README.md); as bases são remontáveis por `simulados/_preparo/preparar_bases.py`.
+
 Convenção de saída: cada desafio grava seus entregáveis em `fase1/<desafio>/submissoes/` (sem repetir o nome do desafio na subpasta). O caderno já aponta para lá via `PASTA_SUBMISSAO`.
 
 ## Como consultar o material de estudo

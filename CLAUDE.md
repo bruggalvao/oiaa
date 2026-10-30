@@ -41,17 +41,6 @@ Antes de sugerir uma abordagem, prefira checar o material já traduzido em `mate
 | Cheat sheet rápido durante o desafio | [10-cola-rapida.md](material-curso/10-cola-rapida.md) |
 | Termos desconhecidos | [07-glossario.md](material-curso/07-glossario.md) |
 
-## Regras não negociáveis do desafio (valem para os três cadernos)
-
-1. **Dividir treino/validação antes de ajustar qualquer coisa.** `fit`/`fit_transform` só no treino; validação só vê `transform`/`predict`. Vale para `StandardScaler`, `TfidfVectorizer`, imputação — qualquer coisa que estime parâmetros dos dados.
-2. **Métrica oficial é F1-macro**, não acurácia — os três desafios são desbalanceados (a classe majoritária infla a acurácia e esconde o erro nas classes raras).
-3. **`class_weight='balanced'`** costuma ser o ganho isolado mais relevante (tabular e visão). Naive Bayes não aceita `class_weight`; usar `class_prior`. No NLP, `balanced` sobe o recall da classe crítica mas derruba o F1-macro — um peso intermediário (`{0: 1.4, 1: 1}`) manteve o F1 máximo e ainda ganhou recall.
-4. **`max_iter` alto em `LogisticRegression`** (2000–3000) — o padrão (100) frequentemente não converge, e o aviso passa despercebido.
-5. **Limitar `max_depth`** em árvore/floresta — `None` cresce até sobreajustar.
-6. **Um fator por vez**, registrando o efeito (caderno de bordo) — mudar vários hiperparâmetros juntos impede saber o que funcionou.
-7. Comparar sempre **na validação**, nunca no treino. Um resultado bom demais é sinal de vazamento, não de sorte.
-8. Vale a **melhor submissão**, não a última.
-
 ## Skills do projeto
 
 - `.claude/skills/jupyter-notebook/` (Claude Code) e `.agents/skills/jupyter-notebook/` (cópia idêntica para outros agentes) — skill para criar/editar `.ipynb` (templates + `scripts/new_notebook.py`). Ao alterar uma, replique na outra. O `SKILL.md` tem uma seção "OIAA-specific rules" que vale acima da orientação genérica: os cadernos-desafio (`*_COLAB.ipynb`) não são refatorados nem re-escafoldados, só preenchidos; o script roda com o `.venv` do projeto.

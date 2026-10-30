@@ -17,6 +17,8 @@ O desafio tabular destrava os outros dois: o que se aprende ali se repete quase 
 ## Estrutura do repositório
 
 - `material-curso/` — material de estudo (não editar; é referência, transcrito da plataforma oficial). Índice completo em [material-curso/README.md](material-curso/README.md).
+  - `fase2/` — PDFs dos quatro aulões da Fase 2 (redes neurais; tabular com rede densa/embeddings/TabNet; visão com EfficientNet-B0/ResNet-50/ViT-B/16 em dois estágios; NLP com DistilBERT multilíngue/BERTimbau/XLM-RoBERTa). Fixam as células A/B/C, as fichas de cada modelo (taxa, lote, nome da camada de saída) e as armadilhas silenciosas de cada trilha.
+- `simulados/` — seis desafios de treino no formato da Fase 2, dois por trilha: um com a base da Fase 1 (Farol, Recomeço, Voz do Cliente) e um com base nova (Boletim, Florada, Checagem). Gabarito oculto em `simulados/_gabaritos/` (não abrir antes de resolver); correção com `.venv/Scripts/python simulados/corrigir.py <desafio> <submissao.csv>`. Detalhes em [simulados/README.md](simulados/README.md).
 - `fase1/` — área de trabalho dos desafios.
   - `Guia_Desafios_Fase1_OIAA2026.pdf` — enunciado oficial dos três desafios.
   - `tabular/` — desafio 1 (ainda vazio — caderno/dados a adicionar).

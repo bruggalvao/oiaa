@@ -53,7 +53,7 @@ Antes de sugerir uma abordagem, prefira checar o material já traduzido em `mate
 | Visão | não iniciado | — | — |
 | NLP | caderno preenchido, submissão gerada | F1-macro 0.948 / recall₀ 0.935 | `LinearSVC(C=0.3, class_weight={0: 1.4, 1: 1})` + TF-IDF (1,2), 50k termos, `min_df=3`, `sublinear_tf`, `strip_accents='unicode'` |
 
-O log um-fator-por-vez do NLP está na célula "Caderno de bordo" do próprio notebook; não repita os experimentos, parta dele.
+O log de experimentos do NLP está na célula "Caderno de bordo" do próprio notebook; não repita os experimentos, parta dele.
 
 ## Ambiente
 

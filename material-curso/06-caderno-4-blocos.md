@@ -135,7 +135,7 @@ Em texto o ponto crítico é o primeiro: **a divisão vem antes de qualquer cois
 
 ## Caderno de bordo da equipe
 
-Instrumento da recomendação "um fator por vez". Cada mudança é registrada **antes de rodar**, fica salva no navegador e é exportável em CSV para anexar ao relatório.
+Registro dos experimentos da equipe. Cada mudança é registrada **antes de rodar**, fica salva no navegador e é exportável em CSV para anexar ao relatório.
 
 | O que mudamos | O que esperávamos | O que aconteceu | Por quê |
 |---|---|---|---|

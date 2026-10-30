@@ -59,10 +59,9 @@ O Capítulo 2 destrava os outros dois: o que se aprende lá se repete quase sem 
 | 2 · Processo | Verificações automáticas registram cada passo → **pontuação parcial** | Valoriza quem entendeu o caminho |
 | 3 · Explicação | Relatório escrito ao final de cada caderno | Desempate; separa quem operou de quem compreendeu |
 
-**Três coisas que reduzem a ansiedade:**
+**Duas coisas que reduzem a ansiedade:**
 1. Vale a **melhor** submissão, não a última — experimentar não custa nada.
 2. Pontuação parcial existe: acertar o passo conta mesmo com resultado final pior.
-3. Alterem **um fator por vez** e anotem o efeito (é para isso que existe o *caderno de bordo*, exportável em CSV).
 
 ## Recursos interativos (não reproduzíveis em .md)
 

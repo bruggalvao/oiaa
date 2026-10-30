@@ -24,7 +24,6 @@ Imagem: 48 × 48 × 3 = **6.912 números** → **14 descritores**.
 
 ## Método de trabalho
 
-- **Um fator por vez**, e anote o efeito no caderno de bordo. Mudar tudo junto impede saber o que funcionou.
 - **Vale a melhor submissão, não a última.** Experimentar não custa nada.
 - **Existe pontuação parcial** — acertar o passo conta.
 - Comparem sempre **na validação**, nunca no treino.

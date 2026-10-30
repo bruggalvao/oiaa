@@ -17,6 +17,8 @@ O desafio tabular destrava os outros dois: o que se aprende ali se repete quase 
 ## Estrutura do repositório
 
 - `material-curso/` — material de estudo (não editar; é referência, transcrito da plataforma oficial). Índice completo em [material-curso/README.md](material-curso/README.md).
+  - `fase2/` — PDFs dos quatro aulões da Fase 2 (redes neurais; tabular com rede densa/embeddings/TabNet; visão com EfficientNet-B0/ResNet-50/ViT-B/16 em dois estágios; NLP com DistilBERT multilíngue/BERTimbau/XLM-RoBERTa). Fixam as células A/B/C, as fichas de cada modelo (taxa, lote, nome da camada de saída) e as armadilhas silenciosas de cada trilha.
+- `simulados/` — seis desafios de treino no formato da Fase 2, dois por trilha: um com a base da Fase 1 (Farol, Recomeço, Voz do Cliente) e um com base nova (Boletim, Florada, Checagem). Gabarito oculto em `simulados/_gabaritos/` (não abrir antes de resolver); correção com `.venv/Scripts/python simulados/corrigir.py <desafio> <submissao.csv>`. Detalhes em [simulados/README.md](simulados/README.md).
 - `fase1/` — área de trabalho dos desafios.
   - `Guia_Desafios_Fase1_OIAA2026.pdf` — enunciado oficial dos três desafios.
   - `tabular/` — desafio 1 (ainda vazio — caderno/dados a adicionar).
@@ -39,17 +41,6 @@ Antes de sugerir uma abordagem, prefira checar o material já traduzido em `mate
 | Cheat sheet rápido durante o desafio | [10-cola-rapida.md](material-curso/10-cola-rapida.md) |
 | Termos desconhecidos | [07-glossario.md](material-curso/07-glossario.md) |
 
-## Regras não negociáveis do desafio (valem para os três cadernos)
-
-1. **Dividir treino/validação antes de ajustar qualquer coisa.** `fit`/`fit_transform` só no treino; validação só vê `transform`/`predict`. Vale para `StandardScaler`, `TfidfVectorizer`, imputação — qualquer coisa que estime parâmetros dos dados.
-2. **Métrica oficial é F1-macro**, não acurácia — os três desafios são desbalanceados (a classe majoritária infla a acurácia e esconde o erro nas classes raras).
-3. **`class_weight='balanced'`** costuma ser o ganho isolado mais relevante (tabular e visão). Naive Bayes não aceita `class_weight`; usar `class_prior`. No NLP, `balanced` sobe o recall da classe crítica mas derruba o F1-macro — um peso intermediário (`{0: 1.4, 1: 1}`) manteve o F1 máximo e ainda ganhou recall.
-4. **`max_iter` alto em `LogisticRegression`** (2000–3000) — o padrão (100) frequentemente não converge, e o aviso passa despercebido.
-5. **Limitar `max_depth`** em árvore/floresta — `None` cresce até sobreajustar.
-6. **Um fator por vez**, registrando o efeito (caderno de bordo) — mudar vários hiperparâmetros juntos impede saber o que funcionou.
-7. Comparar sempre **na validação**, nunca no treino. Um resultado bom demais é sinal de vazamento, não de sorte.
-8. Vale a **melhor submissão**, não a última.
-
 ## Skills do projeto
 
 - `.claude/skills/jupyter-notebook/` (Claude Code) e `.agents/skills/jupyter-notebook/` (cópia idêntica para outros agentes) — skill para criar/editar `.ipynb` (templates + `scripts/new_notebook.py`). Ao alterar uma, replique na outra. O `SKILL.md` tem uma seção "OIAA-specific rules" que vale acima da orientação genérica: os cadernos-desafio (`*_COLAB.ipynb`) não são refatorados nem re-escafoldados, só preenchidos; o script roda com o `.venv` do projeto.
@@ -62,7 +53,7 @@ Antes de sugerir uma abordagem, prefira checar o material já traduzido em `mate
 | Visão | não iniciado | — | — |
 | NLP | caderno preenchido, submissão gerada | F1-macro 0.948 / recall₀ 0.935 | `LinearSVC(C=0.3, class_weight={0: 1.4, 1: 1})` + TF-IDF (1,2), 50k termos, `min_df=3`, `sublinear_tf`, `strip_accents='unicode'` |
 
-O log um-fator-por-vez do NLP está na célula "Caderno de bordo" do próprio notebook; não repita os experimentos, parta dele.
+O log de experimentos do NLP está na célula "Caderno de bordo" do próprio notebook; não repita os experimentos, parta dele.
 
 ## Ambiente
 
